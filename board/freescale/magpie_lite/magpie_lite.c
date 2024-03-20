@@ -103,36 +103,12 @@ int board_early_init_f(void)
 	return 0;
 }
 
-#if IS_ENABLED(CONFIG_FEC_MXC)
-static int setup_fec(void)
-{
-	struct iomuxc_gpr_base_regs *gpr =
-		(struct iomuxc_gpr_base_regs *)IOMUXC_GPR_BASE_ADDR;
-
-	/* Use 125M anatop REF_CLK1 for ENET1, not from external */
-	clrsetbits_le32(&gpr->gpr[1], 0x2000, 0);
-
-	return 0;
-}
-
-int board_phy_config(struct phy_device *phydev)
-{
-	if (phydev->drv->config)
-		phydev->drv->config(phydev);
-
-	return 0;
-}
-#endif
-
 #define DISPMIX				9
 #define MIPI				10
 
 int board_init(void)
 {
 	struct arm_smccc_res res;
-
-	if (IS_ENABLED(CONFIG_FEC_MXC))
-		setup_fec();
 
 	arm_smccc_smc(IMX_SIP_GPC, IMX_SIP_GPC_PM_DOMAIN,
 		      DISPMIX, true, 0, 0, 0, 0, &res);
