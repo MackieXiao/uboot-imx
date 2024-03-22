@@ -120,6 +120,16 @@ config TARGET_IMX8MM_DDR3L_VAL
 	select SUPPORT_SPL
 	select IMX8M_DDR3L
 
+config TARGET_MAGPIE_LITE
+    bool "magpie-lite development board"
+    select IMX8MM
+	select SUPPORT_SPL
+	select IMX8M_LPDDR4
+	select FSL_CAAM
+	select FSL_BLOB
+	select ARCH_MISC_INIT
+	select SPL_CRYPTO if SPL
+
 config TARGET_IMX8MM_EVK
 	bool "imx8mm LPDDR4 EVK board"
 	select IMX8MM
@@ -463,6 +473,7 @@ source "board/engicam/imx8mp/Kconfig"
 source "board/freescale/imx8mq_evk/Kconfig"
 source "board/freescale/imx8mq_val/Kconfig"
 source "board/freescale/imx8mm_ab2/Kconfig"
+source "board/freescale/magpie_lite/Kconfig"
 source "board/freescale/imx8mm_evk/Kconfig"
 source "board/freescale/imx8mm_val/Kconfig"
 source "board/freescale/imx8mn_evk/Kconfig"

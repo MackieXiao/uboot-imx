@@ -1,0 +1,7 @@
+MAGPIE-LITE BOARD
+M:	Mackie Xiao <mackiexiao@foxmail.com>
+S:	Maintained
+F:	board/freescale/magpie_lite/
+F:	include/configs/magpie_lite.h
+F:	configs/magpie_lite_defconfig
+F:  configs/magpie_lite_fspi_defconfig
